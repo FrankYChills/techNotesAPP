@@ -14,11 +14,14 @@ export const usersApiSlice = apiSlice.injectEndpoints({
     // this endpoint creates a query endpoint object (getUsers here) in api state
     getUsers: builder.query({
       query: () => "/users",
+      // get data from /users
       //   if method isn't specified default is "GET"
       validateStatus: (response, result) => {
         // verify there were no errors while fetching
         return response.status === 200 && !result.isError;
       },
+      // cache data for a limited time
+
       keepUnusedDataFor: 5, //secs
       transformResponse: (responseData) => {
         const loadedUsers = responseData.map((user) => {
@@ -36,7 +39,7 @@ export const usersApiSlice = apiSlice.injectEndpoints({
         if (result?.ids) {
           return [
             { type: "User", id: "List" }, //tags or caches users entity
-            ...result.ids.map((id) => ({ type: "User", id })), //caches ids array
+            ...result.ids.map((id) => ({ type: "User", id })), //caches each id in ids array
           ];
         } else
           return [
@@ -44,11 +47,52 @@ export const usersApiSlice = apiSlice.injectEndpoints({
           ];
       },
     }),
+    addNewUser: builder.mutation({
+      query: (initialUserData) => ({
+        // post data to /users
+        url: "/users",
+        method: "POST",
+        body: {
+          ...initialUserData,
+        },
+      }),
+      // clear entity cache
+      invalidatesTags: [{ type: "User", id: "List" }],
+    }),
+    updateUser: builder.mutation({
+      query: (initialUserData) => ({
+        // patch data to /users
+        url: "/users",
+        method: "PATCH",
+        body: {
+          ...initialUserData,
+        },
+      }),
+      // clear cache of particular id in ids array and entity
+      invalidatesTags: (result, error, arg) => [{ type: "User", id: arg.id }],
+    }),
+    deleteUser: builder.mutation({
+      query: ({ id }) => ({
+        url: "/users",
+        // delete to /users
+        method: "DELETE",
+        body: {
+          id,
+        },
+      }),
+      // clear cache of particular id in ids array and entity
+      invalidatesTags: (result, error, arg) => [{ type: "User", id: arg.id }],
+    }),
   }),
 });
 
 // export the query so that we can trigger that from outside
-export const { useGetUsersQuery } = usersApiSlice;
+export const {
+  useGetUsersQuery,
+  useAddNewUserMutation,
+  useDeleteUserMutation,
+  useUpdateUserMutation,
+} = usersApiSlice;
 
 export const selectUsersResult = usersApiSlice.endpoints.getUsers.select(); //select getUsers endpoint in the state
 // NOTE - The state should have been created for any return of data from these endpoints

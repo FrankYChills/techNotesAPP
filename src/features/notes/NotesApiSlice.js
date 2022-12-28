@@ -4,7 +4,12 @@ import { createSelector, createEntityAdapter } from "@reduxjs/toolkit";
 import { apiSlice } from "../../app/api/apiSlice";
 
 // use entity adapter for creating and updating the state
-const notesAdapter = createEntityAdapter({});
+// make entity adapter to sort fetched data at hand
+const notesAdapter = createEntityAdapter({
+  // 1 - to the right , 0 - nothing , -1 - to the left
+  sortComparer: (a, b) =>
+    a.completed === b.completed ? 0 : a.completed ? 1 : -1,
+});
 
 // create an initial state
 const initialState = notesAdapter.getInitialState();
@@ -19,6 +24,7 @@ export const notesApiSlice = apiSlice.injectEndpoints({
         // verify there were no errors while fetching
         return response.status === 200 && !result.isError;
       },
+      // cache data for a limited time
       keepUnusedDataFor: 5, //secs
       transformResponse: (responseData) => {
         const loadedNotes = responseData.map((note) => {
@@ -54,7 +60,7 @@ export const selectNotesResult = notesApiSlice.endpoints.getNotes.select(); //se
 // a memoized selector
 const selectNotesData = createSelector(
   selectNotesResult, // triggers this function | The return of the function will be the getNotes endpoint state inside of queries.Passes return as an input to next function
-  (usersResult) => usersResult.data //returns normalised state(data attribute only from the input) of getNotes query endpoint(ids and entities)
+  (notesResult) => notesResult.data //returns normalised state(data attribute only from the input) of getNotes query endpoint(ids and entities)
 );
 
 // read data from the state via adapter which uses selectNotesData selector for getting data
