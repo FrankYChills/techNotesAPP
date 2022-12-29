@@ -8,7 +8,7 @@ const usersAdapter = createEntityAdapter({});
 
 // create an initial state
 const initialState = usersAdapter.getInitialState();
-
+// extend apiSlice
 export const usersApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     // this endpoint creates a query endpoint object (getUsers here) in api state
@@ -20,9 +20,10 @@ export const usersApiSlice = apiSlice.injectEndpoints({
         // verify there were no errors while fetching
         return response.status === 200 && !result.isError;
       },
-      // cache data for a limited time
-
-      keepUnusedDataFor: 5, //secs
+      //keep  subscribed to getUsers for 5 secs after user leaves this page
+      // after unsub all the state will be lost
+      // by default it will keep subscribed the endpoint for 60 secs
+      // keepUnusedDataFor: 5, //secs
       transformResponse: (responseData) => {
         const loadedUsers = responseData.map((user) => {
           // add a id key to each user cause when we set state the redux will search for id field in each user to set up ids array
@@ -34,7 +35,7 @@ export const usersApiSlice = apiSlice.injectEndpoints({
       },
       providesTags: (result, error, arg) => {
         // assume result is the data attribute in the query
-
+        // cache the state data
         // if the query getUsers has ids array in the state then tag all
         if (result?.ids) {
           return [

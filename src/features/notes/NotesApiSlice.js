@@ -13,7 +13,7 @@ const notesAdapter = createEntityAdapter({
 
 // create an initial state
 const initialState = notesAdapter.getInitialState();
-
+// extend apiSlice
 export const notesApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     // this endpoint creates a query endpoint object (getNotes here) in api state
@@ -24,8 +24,10 @@ export const notesApiSlice = apiSlice.injectEndpoints({
         // verify there were no errors while fetching
         return response.status === 200 && !result.isError;
       },
-      // cache data for a limited time
-      keepUnusedDataFor: 5, //secs
+      //keep  subscribed to getNotes for 5 secs after user leaves this page
+      // after unsub all the state will be lost
+      // by default it will keep subscribed the endpoint for 60 secs
+      // keepUnusedDataFor: 5, //secs
       transformResponse: (responseData) => {
         const loadedNotes = responseData.map((note) => {
           // add a id key to each note cause when we set state the redux will search for id field in each note to set up ids array
@@ -37,6 +39,7 @@ export const notesApiSlice = apiSlice.injectEndpoints({
       },
       providesTags: (result, error, arg) => {
         // assume result is the data attribute in the query
+        // cache the state data
         // if the query getNotes has ids array in the data attribute of state then tag/cache all
         if (result?.ids) {
           return [
