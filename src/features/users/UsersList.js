@@ -5,6 +5,8 @@ import User from "./User";
 const UsersList = () => {
   // trigger getUsers endpoint in the ApiSlice to fetch data
   // grab data(ids and entity) attribute from getNotes query state
+  // query is called immediately and mutation needs to be called
+
   const {
     data: users,
     isLoading,
