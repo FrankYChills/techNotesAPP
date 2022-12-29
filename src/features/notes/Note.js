@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import { selectNoteById } from "./NotesApiSlice";
 
 const Note = ({ noteId }) => {
+  // get entity by id
   const note = useSelector((state) => selectNoteById(state, noteId));
   const navigate = useNavigate();
 

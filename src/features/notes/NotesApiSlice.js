@@ -49,11 +49,52 @@ export const notesApiSlice = apiSlice.injectEndpoints({
           ];
       },
     }),
+    addNewNote: builder.mutation({
+      query: (initialNote) => ({
+        url: "/notes",
+        // post to /notes
+        method: "POST",
+        body: {
+          ...initialNote,
+        },
+        // eg body will be {name:"karan",loc:"kausani"}
+      }),
+      invalidatesTags: [{ type: "Note", id: "List" }], //clear entity cachew
+    }),
+    updateNote: builder.mutation({
+      query: (initialNote) => ({
+        url: "/notes",
+        // PATCH to /notes,
+        method: "PATCH",
+        body: {
+          ...initialNote,
+        },
+      }),
+      invalidatesTags: (result, error, arg) => [{ type: "Note", id: arg.id }], //clear particular id cache from ids and entity
+    }),
+    deleteNote: builder.mutation({
+      query: ({ id }) => ({
+        // get only id param from req
+        url: "/notes",
+        // DELETE at /notes
+        method: "DELETE",
+        body: {
+          id,
+        },
+        // e.g body will be {id:2}
+      }),
+      invalidatesTags: (result, error, arg) => [{ type: "Note", id: arg.id }], //clear particular id cache from ids and entity
+    }),
   }),
 });
 
 // export the query so that we can trigger that from outside
-export const { useGetNotesQuery } = notesApiSlice;
+export const {
+  useGetNotesQuery,
+  useAddNewNoteMutation,
+  useUpdateNoteMutation,
+  useDeleteNoteMutation,
+} = notesApiSlice;
 
 export const selectNotesResult = notesApiSlice.endpoints.getNotes.select(); //select getNotes endpoint in the state
 // NOTE - The state should have been created for any return of data from these endpoints
