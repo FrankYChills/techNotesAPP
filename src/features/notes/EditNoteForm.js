@@ -75,60 +75,60 @@ const EditNoteForm = ({ note, users }) => {
               <FontAwesomeIcon icon={faTrashCan} />
             </button>
           </div>
-          <label className="form__label" htmlFor="title">
-            Title:{" "}
-          </label>
-          <input
-            className={`form__input ${validTitleClass}`}
-            id="title"
-            name="title"
-            type="text"
-            autoComplete="off"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-          />
-          <label className="form__label" htmlFor="text">
-            Text:
-          </label>
-          <input
-            className={`form__input ${validTextClass}`}
-            id="text"
-            name="text"
-            type="text"
-            autoComplete="off"
-            value={text}
-            onChange={(e) => setText(e.target.value)}
-          />
-          <label
-            className="form__label form__checkbox-container"
-            htmlFor="completed"
-          >
-            Completed:
-          </label>
-          <input
-            className="form__checkbox"
-            name="completed"
-            id="completed"
-            type="checkbox"
-            checked={completed}
-            onChange={(e) => setCompleted((prev) => !prev)}
-          />
-          <label
-            className="form__label form__checkbox-container"
-            htmlFor="username"
-          >
-            Assigned to :
-          </label>
-          <select
-            id="username"
-            name="username"
-            className="form__select"
-            value={userId}
-            onChange={(e) => setUserId(e.target.value)}
-          >
-            {userOptions}
-          </select>
         </div>
+        <label className="form__label" htmlFor="title">
+          Title:{" "}
+        </label>
+        <input
+          className={`form__input ${validTitleClass}`}
+          id="title"
+          name="title"
+          type="text"
+          autoComplete="off"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+        />
+        <label className="form__label" htmlFor="text">
+          Text:
+        </label>
+        <input
+          className={`form__input ${validTextClass}`}
+          id="text"
+          name="text"
+          type="text"
+          autoComplete="off"
+          value={text}
+          onChange={(e) => setText(e.target.value)}
+        />
+        <label
+          className="form__label form__checkbox-container"
+          htmlFor="completed"
+        >
+          Completed:
+        </label>
+        <input
+          className="form__checkbox"
+          name="completed"
+          id="completed"
+          type="checkbox"
+          checked={completed}
+          onChange={(e) => setCompleted((prev) => !prev)}
+        />
+        <label
+          className="form__label form__checkbox-container"
+          htmlFor="username"
+        >
+          Assigned to :
+        </label>
+        <select
+          id="username"
+          name="username"
+          className="form__select"
+          value={userId}
+          onChange={(e) => setUserId(e.target.value)}
+        >
+          {userOptions}
+        </select>
       </form>
     </>
   );

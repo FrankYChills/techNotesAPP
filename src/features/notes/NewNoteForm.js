@@ -55,12 +55,13 @@ const NewNoteForm = ({ users }) => {
       <form className="form" onSubmit={onSave}>
         <div className="form__title-row">
           <h2>Add a New Note</h2>
-        </div>
-        <div className="form__action-buttons">
-          <button className="icon-button" title="Save" disabled={!canSave}>
-            {/* faSave on click submits the form */}
-            <FontAwesomeIcon icon={faSave} />
-          </button>
+
+          <div className="form__action-buttons">
+            <button className="icon-button" title="Save" disabled={!canSave}>
+              {/* faSave on click submits the form */}
+              <FontAwesomeIcon icon={faSave} />
+            </button>
+          </div>
         </div>
         <label htmlFor="title" className="form__label">
           Title:
