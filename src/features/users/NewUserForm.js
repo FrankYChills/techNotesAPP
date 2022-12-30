@@ -86,7 +86,9 @@ const NewUserForm = () => {
         <div className="form__title-row">
           <h2>New User</h2>
           <div className="form__action-buttons">
-            <button className="icon-button" title="save" disabled={!canSave}>
+            <button className="icon-button" title="Save" disabled={!canSave}>
+              {/* faSave on click submits the form */}
+
               <FontAwesomeIcon icon={faSave} />
             </button>
           </div>
