@@ -13,7 +13,11 @@ const UsersList = () => {
     isSuccess,
     isError,
     error,
-  } = useGetUsersQuery();
+  } = useGetUsersQuery(undefined, {
+    pollingInterval: 60000, //refetch the data every 60 secs
+    refetchOnFocus: true, //refetch thye data when someone comes back to the app tab
+    refetchOnMountOrArgChange: true, //refetch on refresh
+  });
 
   let content;
   if (isLoading) {

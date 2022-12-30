@@ -11,7 +11,11 @@ const NotesList = () => {
     isSuccess,
     isError,
     error,
-  } = useGetNotesQuery();
+  } = useGetNotesQuery(undefined, {
+    pollingInterval: 15000, //refetch on every 15 secs
+    refetchOnFocus: true, //referesh when user comes back to app tab
+    refetchOnMountOrArgChange: true, //refetch on referesh
+  });
 
   let content;
   if (isLoading) {
