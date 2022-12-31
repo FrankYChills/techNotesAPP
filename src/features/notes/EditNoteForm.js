@@ -104,16 +104,17 @@ const EditNoteForm = ({ note, users }) => {
           className="form__label form__checkbox-container"
           htmlFor="completed"
         >
-          Completed:
+          Work Completed:
+          <input
+            className="form__checkbox"
+            name="completed"
+            id="completed"
+            type="checkbox"
+            checked={completed}
+            onChange={(e) => setCompleted((prev) => !prev)}
+          />
         </label>
-        <input
-          className="form__checkbox"
-          name="completed"
-          id="completed"
-          type="checkbox"
-          checked={completed}
-          onChange={(e) => setCompleted((prev) => !prev)}
-        />
+
         <label
           className="form__label form__checkbox-container"
           htmlFor="username"
@@ -129,6 +130,31 @@ const EditNoteForm = ({ note, users }) => {
         >
           {userOptions}
         </select>
+        <label htmlFor="createdAt" className="form__label">
+          Created At :
+          {new Date(note.createdAt).toLocaleDateString("en-IN", {
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+            hour12: true,
+            hour: "numeric",
+            minute: "numeric",
+            second: "numeric",
+          })}
+        </label>
+        <label htmlFor="updatedAt" className="form__label">
+          Updated At :
+          {new Date(note.updatedAt).toLocaleDateString("en-IN", {
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+            hour12: true,
+            hour: "numeric",
+            minute: "numeric",
+            second: "numeric",
+          })}
+        </label>
+        <br />
       </form>
     </>
   );

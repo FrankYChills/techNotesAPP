@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 
 const Welcome = () => {
   const date = new Date();
+  console.log(date);
   const today = new Intl.DateTimeFormat("en-IN", {
     dateStyle: "full",
     timeStyle: "long",
