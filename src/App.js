@@ -44,7 +44,7 @@ function App() {
                 <Route index element={<UsersList />} />
                 {/* path - /dash/users/id */}
                 <Route path=":id" element={<EditUser />} />
-                {/* path - /dash/user/new */}
+                {/* path - /dash/users/new */}
                 <Route path="new" element={<NewUserForm />} />
               </Route>
             </Route>
