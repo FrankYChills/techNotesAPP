@@ -7,12 +7,16 @@ import { setCredentials } from "./authSlice";
 // import authApiSlice endpoint
 import { useLoginMutation } from "./authApiSlice";
 
+// import custom hook
+import usePersist from "../../hooks/usePersist";
+
 const Login = () => {
   const userRef = useRef();
   const errRef = useRef();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errMsg, setErrMsg] = useState("");
+  const [persist, setPersist] = usePersist();
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -88,6 +92,16 @@ const Login = () => {
             required
           />
           <button className="form__submit-button">Sign In</button>
+          <label htmlFor="persist" className="form__persist">
+            <input
+              type="checkbox"
+              className="form__checkbox"
+              id="persist"
+              onChange={() => setPersist((prev) => !prev)}
+              checked={persist}
+            />
+            Trust this device
+          </label>
         </form>
       </main>
       <footer>
