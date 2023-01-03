@@ -1,6 +1,10 @@
 import { Link } from "react-router-dom";
 
+import useAuth from "../../hooks/useAuth";
+
 const Welcome = () => {
+  // get user data using auth hook
+  const { username, isManager, isAdmin } = useAuth();
   const date = new Date();
   console.log(date);
   const today = new Intl.DateTimeFormat("en-IN", {
@@ -11,7 +15,7 @@ const Welcome = () => {
   const content = (
     <section className="welcome">
       <p style={{ margin: "10px" }}>{today}</p>
-      <h1 style={{ marginLeft: "10px" }}>Welcome!</h1>
+      <h1 style={{ marginLeft: "10px" }}>Welcome {username}!</h1>
       <p style={{ marginLeft: "10px" }}>
         <Link to="/dash/notes"> View techNotes</Link>
       </p>
