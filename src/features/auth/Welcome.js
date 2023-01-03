@@ -22,12 +22,16 @@ const Welcome = () => {
       <p style={{ marginLeft: "10px" }}>
         <Link to="/dash/notes/new">Add New techNotes</Link>
       </p>
-      <p style={{ marginLeft: "10px" }}>
-        <Link to="/dash/users"> View User Settings </Link>
-      </p>
-      <p style={{ marginLeft: "10px" }}>
-        <Link to="/dash/users/new">Add New User</Link>
-      </p>
+      {(isAdmin || isManager) && (
+        <p style={{ marginLeft: "10px" }}>
+          <Link to="/dash/users"> View User Settings </Link>
+        </p>
+      )}
+      {(isAdmin || isManager) && (
+        <p style={{ marginLeft: "10px" }}>
+          <Link to="/dash/users/new">Add New User</Link>
+        </p>
+      )}
     </section>
   );
   return content;
