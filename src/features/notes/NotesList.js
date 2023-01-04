@@ -2,7 +2,11 @@ import { useGetNotesQuery } from "./NotesApiSlice";
 
 import Note from "./Note";
 
+// import useAuth hook
+import useAuth from "../../hooks/useAuth";
+
 const NotesList = () => {
+  const { username, isManager, isAdmin } = useAuth();
   // trigger getUsers endpoint in the ApiSlice to fetch data
   // grab data(ids and entity) attribute from getUsers query state
   const {
@@ -25,9 +29,18 @@ const NotesList = () => {
     content = <p className="errmsg">{error?.data?.message}</p>;
   }
   if (isSuccess) {
-    const { ids } = notes;
+    const { ids, entities } = notes;
+
+    let filteredIds;
+    if (isManager || isAdmin) {
+      filteredIds = [...ids];
+    } else {
+      filteredIds = ids.filter(
+        (noteId) => entities[noteId].username === username
+      );
+    }
     const tableContent = ids?.length
-      ? ids.map((noteId) => <Note key={noteId} noteId={noteId} />)
+      ? filteredIds.map((noteId) => <Note key={noteId} noteId={noteId} />)
       : null;
     content = (
       <table className="table table--notes">
