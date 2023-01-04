@@ -5,7 +5,12 @@ import { useNavigate } from "react-router-dom";
 
 import { useUpdateNoteMutation, useDeleteNoteMutation } from "./NotesApiSlice";
 
+// import authHook
+import useAuth from "../../hooks/useAuth";
+
 const EditNoteForm = ({ note, users }) => {
+  const { isManager, isAdmin } = useAuth();
+
   const [userId, setUserId] = useState(note.user);
   const [title, setTitle] = useState(note.title);
   const [text, setText] = useState(note.text);
@@ -56,6 +61,15 @@ const EditNoteForm = ({ note, users }) => {
 
   const errorContent = (error?.data?.message || delError?.data?.message) ?? "";
 
+  let deleteButton = null;
+  if (isManager || isAdmin) {
+    deleteButton = (
+      <button className="icon-button" title="delete" onClick={onDelete}>
+        <FontAwesomeIcon icon={faTrashCan} />
+      </button>
+    );
+  }
+
   let content = (
     <>
       <p className={errClass}>{errorContent}</p>
@@ -71,9 +85,7 @@ const EditNoteForm = ({ note, users }) => {
             >
               <FontAwesomeIcon icon={faSave} />
             </button>
-            <button className="icon-button" title="Delete" onClick={onDelete}>
-              <FontAwesomeIcon icon={faTrashCan} />
-            </button>
+            {deleteButton}
           </div>
         </div>
         <label className="form__label" htmlFor="title">

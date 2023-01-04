@@ -10,6 +10,7 @@ const authSlice = createSlice({
     setCredentials: (state, action) => {
       // action.payload is the data passed to the function
       const { accessToken } = action.payload;
+
       // set an attribute named token in the auth slice
       state.token = accessToken;
     },
