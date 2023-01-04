@@ -13,13 +13,16 @@ export const usersApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     // this endpoint creates a query endpoint object (getUsers here) in api state
     getUsers: builder.query({
-      query: () => "/users",
       // get data from /users
       //   if method isn't specified default is "GET"
-      validateStatus: (response, result) => {
-        // verify there were no errors while fetching
-        return response.status === 200 && !result.isError;
-      },
+      query: () => ({
+        url: "/users",
+        validateStatus: (response, result) => {
+          // verify there were no errors while fetching
+          return response.status === 200 && !result.isError;
+        },
+      }),
+
       //keep  subscribed to getUsers for 5 secs after user leaves this page
       // after unsub all the state will be lost
       // by default it will keep subscribed the endpoint for 60 secs
