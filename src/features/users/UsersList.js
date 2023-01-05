@@ -1,9 +1,14 @@
 import { useGetUsersQuery } from "./UsersApiSlice";
 import PulseLoader from "react-spinners/PulseLoader";
+import { useEffect } from "react";
 
 import User from "./User";
 
 const UsersList = () => {
+  useEffect(() => {
+    document.title = "Users | techNotes";
+  });
+
   // trigger getUsers endpoint in the ApiSlice to fetch data
   // grab data(ids and entity) attribute from getNotes query state
   // query is called immediately and mutation needs to be called

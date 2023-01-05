@@ -1,8 +1,13 @@
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
 
 import useAuth from "../../hooks/useAuth";
 
 const Welcome = () => {
+  useEffect(() => {
+    document.title = "Home | techNotes";
+  });
+
   // get user data using auth hook
   const { username, isManager, isAdmin } = useAuth();
   const date = new Date();

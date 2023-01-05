@@ -10,6 +10,10 @@ const USER_REGEX = /^[A-z]{3,20}$/; //match a single word of min length 3 and ma
 const PWD_REGEX = /^[A-z0-9!@#$%]{4,12}$/; // match a single word containing given letters of min length 4 and max length 12
 
 const NewUserForm = () => {
+  useEffect(() => {
+    document.title = "Add User | techNotes";
+  });
+
   // query is called immediately and mutation needs to be called
   // this hooks returns a function to trigger endpoint and status of its execution
   const [addNewUser, { isLoading, isSuccess, isError, error }] =

@@ -1,11 +1,16 @@
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { useEffect } from "react";
 
 import { selectNoteById } from "./NotesApiSlice";
 import { selectAllUsers } from "../users/UsersApiSlice";
 import EditNoteForm from "./EditNoteForm";
 
 const EditNote = () => {
+  useEffect(() => {
+    document.title = "Edit Note | techNotes";
+  });
+
   const { id } = useParams();
 
   const note = useSelector((state) => selectNoteById(state, id));

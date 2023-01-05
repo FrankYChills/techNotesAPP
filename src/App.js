@@ -1,4 +1,5 @@
 import { Routes, Route } from "react-router-dom";
+import { useEffect } from "react";
 
 import Layout from "./components/Layout";
 import Public from "./components/Public";
@@ -17,6 +18,9 @@ import RequireAuth from "./features/auth/RequireAuth";
 import { ROLES } from "./config/roles";
 
 function App() {
+  useEffect(() => {
+    document.title = "Welcome to techNotes";
+  });
   return (
     <div className="App">
       <Routes>

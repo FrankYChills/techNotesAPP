@@ -1,5 +1,6 @@
 import { useGetNotesQuery } from "./NotesApiSlice";
 import PulseLoader from "react-spinners/PulseLoader";
+import { useEffect } from "react";
 
 import Note from "./Note";
 
@@ -7,6 +8,10 @@ import Note from "./Note";
 import useAuth from "../../hooks/useAuth";
 
 const NotesList = () => {
+  useEffect(() => {
+    document.title = "Notes | techNotes";
+  });
+
   const { username, isManager, isAdmin } = useAuth();
   // trigger getUsers endpoint in the ApiSlice to fetch data
   // grab data(ids and entity) attribute from getUsers query state

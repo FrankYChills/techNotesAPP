@@ -29,6 +29,10 @@ const Login = () => {
   }, []);
 
   useEffect(() => {
+    document.title = "Login | techNotes";
+  });
+
+  useEffect(() => {
     setErrMsg("");
   }, [username, password]);
 

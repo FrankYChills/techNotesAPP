@@ -6,6 +6,10 @@ import { useNavigate } from "react-router-dom";
 import { useAddNewNoteMutation } from "./NotesApiSlice";
 
 const NewNoteForm = ({ users }) => {
+  useEffect(() => {
+    document.title = "Add Note | techNotes";
+  });
+
   const [userId, setUserId] = useState("");
   const [title, setTitle] = useState("");
   const [text, setText] = useState("");
