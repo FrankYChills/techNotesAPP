@@ -7,8 +7,7 @@ import { apiSlice } from "../../app/api/apiSlice";
 // make entity adapter to sort fetched data at hand
 const notesAdapter = createEntityAdapter({
   // 1 - to the right , 0 - nothing , -1 - to the left
-  sortComparer: (a, b) =>
-    a.completed === b.completed ? 0 : a.completed ? 1 : -1,
+  sortComparer: (a, b) => b.updatedAt.localeCompare(a.updatedAt),
 });
 
 // create an initial state

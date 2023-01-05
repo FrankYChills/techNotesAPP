@@ -36,19 +36,19 @@ const DashHeader = () => {
   }, [isSuccess, navigate]);
 
   let dashClass = null;
-  if (
-    !DASH_REGEX.test(pathname) &&
-    !NOTES_REGEX.test(pathname) &&
-    !USERS_REGEX.test(pathname)
-  ) {
-    dashClass = "dash-header__container--small";
-  }
+  // if (
+  //   !DASH_REGEX.test(pathname) &&
+  //   !NOTES_REGEX.test(pathname) &&
+  //   !USERS_REGEX.test(pathname)
+  // ) {
+  //   dashClass = "dash-header__container--small";
+  // }
 
   let newNoteButton = null;
   if (NOTES_REGEX.test(pathname)) {
     newNoteButton = (
       <button
-        className="icon-button"
+        className="icon-button "
         title="New Note"
         onClick={() => navigate("/dash/notes/new")}
       >
@@ -98,7 +98,11 @@ const DashHeader = () => {
     );
   }
   const logoutButton = (
-    <button className="icon-button" title="Logout" onClick={() => sendLogout()}>
+    <button
+      className="icon-button lo"
+      title="Logout"
+      onClick={() => sendLogout()}
+    >
       <FontAwesomeIcon icon={faRightFromBracket} />
     </button>
   );

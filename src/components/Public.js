@@ -5,17 +5,24 @@ const Public = () => {
     <section className="public">
       <header>
         <h1>
-          Welcome to <span className="nowrap">Dan D. Repairs</span>
+          Welcome to <span className="nowrap">techFix Services</span>
         </h1>
       </header>
       <main className="public__main">
         <p>
-          Located in Beautiful Downtown Chicago City, Dan D. repairs provides a
-          trained staff ready to meet your tech repair needs.
+          Located in Beautiful Downtown Chicago City, techFix services provide a
+          trained team ready to meet your tech needs.We specialize in Web
+          development, Artificial Intelligence, Machine learning and Blockchain
+          tooling.
+        </p>
+        <br />
+        <p>
+          We provide services at the budget friendly cost.Connect with us now to
+          know more.
         </p>
         <br />
         <address className="public__addr">
-          Dan D. Repairs
+          techFix Services
           <br />
           555 Marine drive
           <br />
@@ -25,6 +32,9 @@ const Public = () => {
         </address>
         <br />
         <p>Owner: Dan Davidson </p>
+        <a className="quote" href="mailto:email@email.de">
+          Get a Quote
+        </a>
       </main>
       <br />
 

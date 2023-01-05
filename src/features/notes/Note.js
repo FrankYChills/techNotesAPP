@@ -35,7 +35,7 @@ const Note = ({ noteId }) => {
         <td className="table__cell note__title">{note.title}</td>
         <td className="table__cell note__username">{note.username}</td>
         <td className="table__cell">
-          <button className="icon-button table__button" onClick={handleEdit}>
+          <button className="icon-button table__button lo" onClick={handleEdit}>
             <FontAwesomeIcon icon={faPenToSquare} />
           </button>
         </td>

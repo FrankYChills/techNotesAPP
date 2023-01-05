@@ -33,6 +33,7 @@
   color: var(--ERROR);
   padding: 0.25em;
   margin-bottom: 0.5em;
+  margin-top: 1rem;
 }
 
 .errmsg a:any-link {
@@ -77,6 +78,7 @@ body {
   background-size: 94%;
   /* background-position: top right; */
   background-blend-mode: multiply;
+  margin-left: 2%;
 }
 
 input,
@@ -114,18 +116,24 @@ a:focus-visible {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  margin: 1%;
 }
 
 .public {
   padding: 1em;
   flex-grow: 1;
-  text-align: center;
+
   margin-top: 3%;
 }
 
 .emp-login {
   padding: 10px;
   border: 2px solid red;
+}
+
+.quote {
+  padding: 8px;
+  border: 2px solid green;
 }
 .public__main,
 .login {
@@ -171,7 +179,9 @@ a:focus-visible {
   justify-content: flex-end;
   gap: 0.5em;
 }
-
+nav button {
+  margin: 5%;
+}
 .dash-container {
   padding: 0.75em 0.5em 0.5em;
   flex-grow: 1;
@@ -182,7 +192,7 @@ a:focus-visible {
 
   position: fixed;
   width: 100%;
-  bottom: 0;
+  bottom: 1%;
   z-index: 1;
   background-color: var(--BGCOLOR);
   padding: 0.5em;
@@ -194,9 +204,14 @@ a:focus-visible {
 }
 
 .dash-footer__button {
-  font-size: 1rem;
+  font-size: 1.4rem;
   width: auto;
   height: auto;
+  margin-right: 3%;
+}
+
+footer p {
+  margin-right: 1%;
 }
 
 /* || TABLES - GENERAL */
@@ -214,6 +229,7 @@ tr {
   grid-template-columns: 1fr 2fr 1fr;
   color: var(--TABLE-COLOR);
   gap: 0.1em;
+  margin-top: 3%;
 }
 
 .table__button {
@@ -272,6 +288,7 @@ tr {
   flex-flow: column nowrap;
   gap: 0.75em;
   max-width: 800px;
+  margin: 1%;
 }
 
 .form__checkbox-container {
@@ -340,7 +357,7 @@ tr {
   gap: 0.5em;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 600px) {
   body {
     font-size: 1.5rem;
   }
@@ -350,7 +367,23 @@ tr {
   }
 
   .icon-button {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
+    display: none;
+  }
+
+  .dash-footer__button {
+    font-size: 1rem;
+  }
+
+  .dash-footer {
+    justify-content: flex-start;
+  }
+  .lo {
+    display: block;
+  }
+
+  .ss {
+    font-size: 1.2rem;
   }
 }
 

@@ -98,7 +98,7 @@ const NewUserForm = () => {
           </div>
         </div>
         <label className="form__label" htmlFor="username">
-          Username: <span className="nowrap">[3-20 letters]</span>
+          Username: <span className="nowrap ss">[3-20 letters]</span>
         </label>
         <input
           className={`form__input ${validUserClass}`}
@@ -110,7 +110,8 @@ const NewUserForm = () => {
           onChange={(e) => setUsername(e.target.value)}
         />
         <label className="form__label" htmlFor="password">
-          Password: <span className="nowrap">[4-12 chars including !@#$%]</span>
+          Password:{" "}
+          <span className="nowrap ss">[4-12 chars including !@#$%]</span>
         </label>
         <input
           className={`form__input ${validPwdClass}`}

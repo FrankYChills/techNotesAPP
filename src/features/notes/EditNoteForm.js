@@ -69,7 +69,10 @@ const EditNoteForm = ({ note, users }) => {
       </button>
     );
   }
-
+  var canChange = false;
+  if (isAdmin || isManager) {
+    canChange = true;
+  }
   let content = (
     <>
       <p className={errClass}>{errorContent}</p>
@@ -99,6 +102,7 @@ const EditNoteForm = ({ note, users }) => {
           autoComplete="off"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
+          readOnly={!canChange}
         />
         <label className="form__label" htmlFor="text">
           Text:
@@ -111,6 +115,7 @@ const EditNoteForm = ({ note, users }) => {
           autoComplete="off"
           value={text}
           onChange={(e) => setText(e.target.value)}
+          readOnly={!canChange}
         />
         <label
           className="form__label form__checkbox-container"
@@ -139,6 +144,7 @@ const EditNoteForm = ({ note, users }) => {
           className="form__select"
           value={userId}
           onChange={(e) => setUserId(e.target.value)}
+          disabled={!canChange}
         >
           {userOptions}
         </select>
