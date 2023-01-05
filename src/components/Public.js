@@ -32,6 +32,7 @@ const Public = () => {
         </address>
         <br />
         <p>Owner: Dan Davidson </p>
+        <br />
         <a className="quote" href="mailto:email@email.de">
           Get a Quote
         </a>
