@@ -1,6 +1,7 @@
 import { Outlet, Link } from "react-router-dom";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import PulseLoader from "react-spinners/PulseLoader";
 
 //state gets vanished when user refreshes the page
 // persist the state when user is logged in and he refreshes the page
@@ -14,7 +15,6 @@ import React from "react";
 const PersistLogin = () => {
   const [persist] = usePersist();
   const token = useSelector(selectCurrentToken);
-  const effectRan = useRef(false);
 
   const [trueSuccess, setTrueSuccess] = useState(false);
 
@@ -37,7 +37,7 @@ const PersistLogin = () => {
     if (!token && persist) {
       verifyRefreshToken();
     }
-  }, []);
+  }, [persist, refresh, token]);
 
   let content;
   if (!persist) {
@@ -46,7 +46,7 @@ const PersistLogin = () => {
   } else if (isLoading) {
     console.log("getting access token");
     // here we are returning a <p> element not an outlet so no other component below this comp level will get rendered
-    content = <p>Loading ....</p>;
+    content = <PulseLoader color={"#fff"} />;
   } else if (isError) {
     console.log("error while refreshing and getting token back");
     content = (

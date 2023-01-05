@@ -1,4 +1,5 @@
 import { useGetNotesQuery } from "./NotesApiSlice";
+import PulseLoader from "react-spinners/PulseLoader";
 
 import Note from "./Note";
 
@@ -23,7 +24,7 @@ const NotesList = () => {
 
   let content;
   if (isLoading) {
-    content = <p>Loading ...</p>;
+    content = <PulseLoader color={"#fff"} />;
   }
   if (isError) {
     content = <p className="errmsg">{error?.data?.message}</p>;

@@ -1,6 +1,7 @@
 import { useRef, useEffect, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import PulseLoader from "react-spinners/PulseLoader";
 
 // import authSlice actions
 import { setCredentials } from "./authSlice";
@@ -34,7 +35,7 @@ const Login = () => {
   const errClass = errMsg ? "errmsg" : "offscreen";
 
   if (isLoading) {
-    return <p> Loading ... </p>;
+    return <PulseLoader color={"#fff"} />;
   }
 
   const handleSubmit = async (e) => {

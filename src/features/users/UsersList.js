@@ -1,4 +1,5 @@
 import { useGetUsersQuery } from "./UsersApiSlice";
+import PulseLoader from "react-spinners/PulseLoader";
 
 import User from "./User";
 
@@ -21,7 +22,7 @@ const UsersList = () => {
 
   let content;
   if (isLoading) {
-    content = <p>Loading ...</p>;
+    content = <PulseLoader color={"#fff"} />;
   }
   if (isError) {
     content = <p className="errmsg">{error?.data?.message}</p>;
