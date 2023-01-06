@@ -25,7 +25,7 @@ export const authApiSlice = apiSlice.injectEndpoints({
       async onQueryStarted(arg, { dispatch, queryFulfilled }) {
         try {
           const { data } = await queryFulfilled;
-          console.log("Response from the server: ", data);
+          // console.log("Response from the server: ", data);
           // call logout action in the state
           dispatch(logOut());
           // after logging out clear all of the local state
@@ -43,7 +43,7 @@ export const authApiSlice = apiSlice.injectEndpoints({
       async onQueryStarted(arg, { dispatch, queryFulfilled }) {
         try {
           const { data } = await queryFulfilled;
-          console.log(`Response from the server(Refresh) : ${data}`);
+          // console.log(`Response from the server(Refresh) : ${data}`);
           const { accessToken } = data;
           dispatch(setCredentials({ accessToken }));
         } catch (err) {

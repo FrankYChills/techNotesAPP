@@ -22,7 +22,7 @@ const baseQueryWithReAuth = async (args, api, extraOptions) => {
 
   // if theres an error that means in above query our access token has expired
   if (result?.error?.status === 403) {
-    console.log("Access Token got expired! Sending Refresh token ...");
+    // console.log("Access Token got expired! Sending Refresh token ...");
     // call refresh endpoint
     const refreshResult = await baseQuery("/auth/refresh", api, extraOptions);
     // new access token will be inside data attribute

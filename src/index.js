@@ -14,7 +14,7 @@ import { disableReactDevTools } from "@fvilers/disable-react-devtools";
 if (process.env.NODE_ENV === "production") {
   disableReactDevTools();
 }
-console.log(process.env.NODE_ENV);
+// console.log(process.env.NODE_ENV);
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <>

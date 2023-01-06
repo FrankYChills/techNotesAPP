@@ -11,7 +11,7 @@ const Welcome = () => {
   // get user data using auth hook
   const { username, isManager, isAdmin } = useAuth();
   const date = new Date();
-  console.log(date);
+  // console.log(date);
   const today = new Intl.DateTimeFormat("en-IN", {
     dateStyle: "full",
     timeStyle: "long",

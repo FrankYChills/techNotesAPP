@@ -7,8 +7,8 @@ const RequireAuth = ({ allowedRoles }) => {
   const location = useLocation();
   const { roles } = useAuth();
 
-  console.log("user roles", roles);
-  console.log("allowed", allowedRoles);
+  // console.log("user roles", roles);
+  // console.log("allowed", allowedRoles);
   const content =
     // if sondition is true for any one of the role
     // if there is a role return normal outlet comp. to mount else return navigate component which sends user back to login page

@@ -23,11 +23,11 @@ const PersistLogin = () => {
 
   useEffect(() => {
     const verifyRefreshToken = async () => {
-      console.log("Verifying Refresh Token ...");
+      // console.log("Verifying Refresh Token ...");
       try {
         // when this component mounts(initally and on refresh) trigger refresh mutation
         await refresh();
-        console.log("getting access token again");
+        // console.log("getting access token again");
         setTrueSuccess(true);
       } catch (err) {
         console.log(err);
@@ -41,14 +41,14 @@ const PersistLogin = () => {
 
   let content;
   if (!persist) {
-    console.log("no persist");
+    // console.log("no persist");
     content = <Outlet />;
   } else if (isLoading) {
-    console.log("getting access token");
+    // console.log("getting access token");
     // here we are returning a <p> element not an outlet so no other component below this comp level will get rendered
     content = <PulseLoader color={"#fff"} />;
   } else if (isError) {
-    console.log("error while refreshing and getting token back");
+    // console.log("error while refreshing and getting token back");
     content = (
       <p className="errmsg">
         {error?.data?.message}
@@ -56,11 +56,11 @@ const PersistLogin = () => {
       </p>
     );
   } else if (isSuccess && trueSuccess) {
-    console.log("Success");
+    // console.log("Success");
     content = <Outlet />;
   } else if (token && isUninitialized) {
-    console.log("token and unint");
-    console.log("Uninitialized");
+    // console.log("token and unint");
+    // console.log("Uninitialized");
     content = <Outlet />;
   }
 
