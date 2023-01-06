@@ -127,12 +127,13 @@ a:focus-visible {
 }
 
 .emp-login {
-  padding: 9px;
+  padding: 8px;
   border: 2px solid orange;
   border-radius: 20px;
   background-color: black;
-  font-size: 1.6rem;
+  font-size: 1.2rem;
   color: yellow !important;
+  margin-left: 20px;
 }
 
 .emp-login:hover {
@@ -142,7 +143,7 @@ a:focus-visible {
 .quote {
   padding: 8px;
   border: 2px solid orange;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   background-color: black;
   color: yellow;
   border-radius: 20px;

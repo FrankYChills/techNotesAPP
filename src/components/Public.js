@@ -36,14 +36,13 @@ const Public = () => {
         <a className="quote" href="mailto:email@email.de">
           Get a Quote
         </a>
-      </main>
-      <br />
-
-      <footer>
         <Link to="/login" className="emp-login">
           Employee Login
         </Link>
-      </footer>
+      </main>
+      <br />
+
+      <footer></footer>
     </section>
   );
   return content;
