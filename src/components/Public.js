@@ -5,13 +5,13 @@ const Public = () => {
     <section className="public">
       <header>
         <h1>
-          Welcome to <span className="nowrap">techFix Services</span>
+          Welcome to <span className="nowrap">techNotes Services</span>
         </h1>
       </header>
       <main className="public__main">
         <p>
-          Located in Beautiful Downtown Chicago City, techFix services provide a
-          trained team ready to meet your tech needs.We specialize in Web
+          Located in Beautiful Downtown Chicago City, techNotes services provide
+          a trained team ready to meet your tech needs.We specialize in Web
           development, Artificial Intelligence, Machine learning and Blockchain
           tooling.
         </p>
@@ -22,7 +22,7 @@ const Public = () => {
         </p>
         <br />
         <address className="public__addr">
-          techFix Services
+          techNotes Services
           <br />
           555 Marine drive
           <br />
