@@ -4,7 +4,7 @@ import { setCredentials } from "../../features/auth/authSlice";
 
 const baseQuery = fetchBaseQuery({
   // backend api address
-  baseUrl: "https://techNotes-services.onrender.com",
+  baseUrl: "https://technotes-services-api.onrender.com",
   credentials: "include", //allow cache to send
   prepareHeaders: (headers, { getState }) => {
     // send header to the server
