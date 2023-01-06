@@ -81,7 +81,7 @@ const EditNoteForm = ({ note, users }) => {
           <h2>Edit Note</h2>
           <div className="form__action-buttons">
             <button
-              className="icon-button"
+              className="icon-button lo"
               title="Save"
               onClick={onSave}
               disabled={!canSave}
