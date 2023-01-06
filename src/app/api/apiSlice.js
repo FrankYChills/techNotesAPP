@@ -3,7 +3,8 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { setCredentials } from "../../features/auth/authSlice";
 
 const baseQuery = fetchBaseQuery({
-  baseUrl: "http://localhost:3500",
+  // backend api address
+  baseUrl: "https://techNotes-services.onrender.com",
   credentials: "include", //allow cache to send
   prepareHeaders: (headers, { getState }) => {
     // send header to the server

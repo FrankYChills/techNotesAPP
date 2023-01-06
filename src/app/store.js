@@ -18,7 +18,7 @@ export const store = configureStore({
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(apiSlice.middleware),
-  devTools: true,
+  devTools: false, //true in dev
 });
 // allow listeners to access the store
 setupListeners(store.dispatch);

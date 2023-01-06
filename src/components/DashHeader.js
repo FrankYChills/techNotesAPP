@@ -16,7 +16,7 @@ import { useSendLogOutMutation } from "../features/auth/authApiSlice";
 // import auth hook for user roles
 import useAuth from "../hooks/useAuth";
 
-const DASH_REGEX = /^\/dash(\/)?$/;
+// const DASH_REGEX = /^\/dash(\/)?$/;
 const NOTES_REGEX = /^\/dash\/notes(\/)?$/;
 const USERS_REGEX = /^\/dash\/users(\/)?$/;
 
