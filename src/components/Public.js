@@ -11,9 +11,11 @@ const Public = () => {
       <main className="public__main">
         <p>
           Located in Beautiful Downtown Chicago City, techNotes services provide
-          a trained team ready to meet your tech needs.We specialize in Web
-          development, Artificial Intelligence, Machine learning and Blockchain
-          tooling.
+          a trained team ready to meet your tech needs.We specialize in both
+          hardware and software repairements.If your system can be repaired at
+          your home , we provide you on-site services. We have thousands of
+          satisfied and loyal customers who trust on techNotes for any of their
+          tech needs.
         </p>
         <br />
         <p>
